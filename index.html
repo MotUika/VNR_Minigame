@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Người Lính Cụ Hồ - Tây Bắc 1954</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Paper.js for vector graphics -->
+    <script type="text/javascript" src="https://unpkg.com/paper@0.12.17/dist/paper-full.min.js"></script>
+    <!-- Anime.js for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <!-- Name Input Modal -->
+        <div id="nameInputModal" class="name-input-modal">
+            <div class="name-input-content">
+                <h2>Chào Mừng Đến Tây Bắc 1954</h2>
+                <p>Nhập tên của bạn để bắt đầu chiến đấu!</p>
+                <input type="text" id="playerNameInput" placeholder="Nhập tên của bạn..." maxlength="20">
+                <button id="startGameBtn">Bắt Đầu Chiến Đấu</button>
+            </div>
+        </div>
+        
+        <!-- Victory Screen -->
+        <div id="victoryScreen" class="victory-screen hidden">
+            <div class="victory-content">
+                <h2>🎉 Chiến Thắng! 🎉</h2>
+                <p class="victory-message">Bạn đã hoàn thành chiến dịch Tây Bắc!</p>
+                <p class="victory-stats">
+                    <span>Người chơi: <strong id="victoryPlayerName"></strong></span><br>
+                    <span>Điểm số: <strong id="victoryScore">0</strong></span>
+                </p>
+                <div class="leaderboard">
+                    <h3>🏆 Bảng Xếp Hạng 🏆</h3>
+                    <div id="leaderboardList"></div>
+                </div>
+                <button onclick="restartGame()">Chơi Lại</button>
+            </div>
+        </div>
+        
+        <div class="game-header">
+            <h1>Người Lính Cụ Hồ</h1>
+            <div class="score-info">
+                <span>Người chơi: <span id="playerNameDisplay"></span></span>
+                <span>Điểm: <span id="score">0</span></span>
+                <span>Mạng: <span id="lives">3</span></span>
+                <span>Tiến độ: <span id="progress">0</span>%</span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="1200" height="600"></canvas>
+        
+        <!-- Minimap -->
+        <div class="minimap">
+            <div class="minimap-player" id="minimapPlayer"></div>
+            <div class="minimap-progress" id="minimapProgress"></div>
+        </div>
+        
+        <div class="game-controls">
+            <div class="instructions">
+                <p><strong>Điều khiển:</strong></p>
+                <p>A/D hoặc ←/→: Di chuyển</p>
+                <p>W hoặc ↑: Nhảy</p>
+                <p>S hoặc ↓: Cúi xuống</p>
+                <p>Space: Bắn</p>
+            </div>
+        </div>
+        
+        <div id="gameOver" class="game-over hidden">
+            <h2>Trận chiến kết thúc!</h2>
+            <p>Điểm số: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">Chiến đấu lại</button>
+        </div>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
